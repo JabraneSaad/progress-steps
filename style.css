@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+:root {
+    --filled: #4195da;
+    --empty: #d0cece;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Open Sans", sans-serif;
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    align-items: center;
+    overflow: hidden;
+    margin: 0;
+}
+
+.container {
+    text-align: center;
+}
+
+.progress-container {
+    display: flex;
+    justify-content: space-between;
+    /* so we can position he progress bars */
+    position: relative;
+    margin-bottom: 20px;
+    max-width: 100%;
+    width: 350px;
+}
+
+.progress-container::before {
+    background-color: var(--empty);
+    position: absolute;
+    top: 50%;
+    left: 0;
+    height: 4px;
+    width: 100%;
+    /* so that the progress bar passes through the middle of the circles */
+    transform: translateY(-50%);
+    z-index: -1;
+    content: '';
+}
+
+.progress {
+    background-color: var(--filled);
+    position: absolute;
+    top: 50%;
+    left: 0;
+    height: 4px;
+    /* TODO: change the width depending on the stage*/
+    width: 0%;
+    transform: translateY(-50%);
+    z-index: -1;
+    transition: 0.4s ease;
+}
+
+.circle {
+    color: var(--empty);
+    background-color: #fff;
+    width: 30px;
+    height: 30px;
+    border: 3px solid var(--empty);
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.circle.active {
+    border: 3px solid var(--filled);
+}
+
+/* buttons */
+
+.btn {
+    cursor: pointer;
+    background-color: var(--filled);
+    font-size: 15px;
+    color: #fff;
+    width: 100px;
+    height: 40px;
+    border-radius: 7px;
+    border: none;
+    margin: 30px 10px;
+}
+
+.btn:active {
+    transform: scale(.9);
+    transition: 0.1s ease;
+}
+
+.btn:disabled {
+    background-color: var(--empty);
+    cursor: not-allowed;
+}
